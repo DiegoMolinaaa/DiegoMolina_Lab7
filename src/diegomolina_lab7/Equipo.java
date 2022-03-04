@@ -11,22 +11,14 @@ package diegomolina_lab7;
  */
 public class Equipo {
     private String nombre;
-    private int pGanados, pEmpatados,pPerdidos, golFavor, golContra, puntos;
+    private int pJugados,pGanados, pEmpatados,pPerdidos, golFavor, golContra, puntos;
 
     public Equipo() {
     }
 
-    public Equipo(String nombre, int pGanados, int pEmpatados, int pPerdidos, int golFavor, int golContra) {
+    public Equipo(String nombre, int pJugados, int pGanados, int pEmpatados, int pPerdidos, int golFavor, int golContra, int puntos) {
         this.nombre = nombre;
-        this.pGanados = pGanados;
-        this.pEmpatados = pEmpatados;
-        this.pPerdidos = pPerdidos;
-        this.golFavor = golFavor;
-        this.golContra = golContra;
-    }
-
-    public Equipo(String nombre, int pGanados, int pEmpatados, int pPerdidos, int golFavor, int golContra, int puntos) {
-        this.nombre = nombre;
+        this.pJugados = pJugados;
         this.pGanados = pGanados;
         this.pEmpatados = pEmpatados;
         this.pPerdidos = pPerdidos;
@@ -34,13 +26,21 @@ public class Equipo {
         this.golContra = golContra;
         this.puntos = puntos;
     }
-
+    
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public int getpJugados() {
+        return pJugados;
+    }
+
+    public void setpJugados(int pJugados) {
+        this.pJugados = pJugados;
     }
 
     public int getpGanados() {

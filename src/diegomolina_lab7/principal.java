@@ -5,7 +5,12 @@
  */
 package diegomolina_lab7;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -51,6 +56,13 @@ public class principal extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jd_simular = new javax.swing.JDialog();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        cb_equipo1 = new javax.swing.JComboBox<>();
+        cb_equipo2 = new javax.swing.JComboBox<>();
+        jl_num1 = new javax.swing.JLabel();
+        jl_num2 = new javax.swing.JLabel();
+        bt_simular = new javax.swing.JButton();
         jd_tabla = new javax.swing.JDialog();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -141,16 +153,17 @@ public class principal extends javax.swing.JFrame {
                     .addGroup(jd_modificarLayout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jd_modificarLayout.createSequentialGroup()
-                            .addGap(120, 120, 120)
-                            .addComponent(cb_equiposMod, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jd_modificarLayout.createSequentialGroup()
-                            .addGap(139, 139, 139)
-                            .addGroup(jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(tf_nombreMod, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(bt_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jd_modificarLayout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(cb_equiposMod, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_modificarLayout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(tf_nombreMod, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(71, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_modificarLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(bt_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
         );
         jd_modificarLayout.setVerticalGroup(
             jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,10 +178,12 @@ public class principal extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tf_nombreMod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bt_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
+
+        jd_eliminar.setSize(new java.awt.Dimension(400, 300));
 
         bt_eliminar.setText("Eliminar");
         bt_eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -217,15 +232,71 @@ public class principal extends javax.swing.JFrame {
                 .addContainerGap(83, Short.MAX_VALUE))
         );
 
+        jd_simular.setSize(new java.awt.Dimension(400, 300));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel6.setText("Simular");
+
+        jLabel9.setText("Escoga los dos equipos que jugaran");
+
+        bt_simular.setText("Simular");
+        bt_simular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_simularActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_simularLayout = new javax.swing.GroupLayout(jd_simular.getContentPane());
         jd_simular.getContentPane().setLayout(jd_simularLayout);
         jd_simularLayout.setHorizontalGroup(
             jd_simularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_simularLayout.createSequentialGroup()
+                .addGap(119, 119, 119)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_simularLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jd_simularLayout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addComponent(bt_simular, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jd_simularLayout.createSequentialGroup()
+                .addGroup(jd_simularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_simularLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(cb_equipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_simularLayout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(jl_num1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addGroup(jd_simularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_simularLayout.createSequentialGroup()
+                        .addComponent(cb_equipo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_simularLayout.createSequentialGroup()
+                        .addComponent(jl_num2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(93, 93, 93))))
         );
         jd_simularLayout.setVerticalGroup(
             jd_simularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_simularLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jd_simularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cb_equipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_equipo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_simularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jl_num1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jl_num2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(bt_simular, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
 
         javax.swing.GroupLayout jd_tablaLayout = new javax.swing.GroupLayout(jd_tabla.getContentPane());
@@ -321,23 +392,35 @@ public class principal extends javax.swing.JFrame {
 
     private void mi_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_modificarActionPerformed
         // TODO add your handling code here:
-        jd_modificar.setVisible(true);
-        jd_modificar.setLocationRelativeTo(this);
-        DefaultComboBoxModel dc=
-        (DefaultComboBoxModel) cb_equiposMod.getModel();
-        for (Equipo e : equipos) {
-            dc.addElement(e);
+        if(equipos.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe de agregar equipos para poder modificarlos");
+        }
+        else{
+            jd_modificar.setVisible(true);
+            jd_modificar.setLocationRelativeTo(this);
+            DefaultComboBoxModel dc=
+            (DefaultComboBoxModel) cb_equiposMod.getModel();
+            dc.removeAllElements();
+            for (Equipo e : equipos) {
+                dc.addElement(e);
+            }
         }
     }//GEN-LAST:event_mi_modificarActionPerformed
 
     private void mi_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_eliminarActionPerformed
         // TODO add your handling code here:
-        jd_eliminar.setVisible(true);
-        jd_eliminar.setLocationRelativeTo(this);
-        DefaultComboBoxModel dc=
-        (DefaultComboBoxModel) cb_equiposElim.getModel();
-        for (Equipo e : equipos) {
-            dc.addElement(e);
+        if(equipos.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe de agregar equipos para poder eliminarlos");
+        }
+        else{
+            jd_eliminar.setVisible(true);
+            jd_eliminar.setLocationRelativeTo(this);
+            DefaultComboBoxModel dc=
+            (DefaultComboBoxModel) cb_equiposElim.getModel();
+            dc.removeAllElements();
+            for (Equipo e : equipos) {
+                dc.addElement(e);
+            }
         }
     }//GEN-LAST:event_mi_eliminarActionPerformed
 
@@ -347,25 +430,54 @@ public class principal extends javax.swing.JFrame {
 
     private void mi_simularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_simularActionPerformed
         // TODO add your handling code here:
-        jd_simular.setVisible(true);
-        jd_simular.setLocationRelativeTo(this);
+        if(equipos.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe de agregar equipos para poder simular partidos");
+        }
+        else{
+            jd_simular.setVisible(true);
+            jd_simular.setLocationRelativeTo(this);
+            DefaultComboBoxModel dc=
+            (DefaultComboBoxModel) cb_equipo1.getModel();
+            DefaultComboBoxModel dc2=
+            (DefaultComboBoxModel) cb_equipo2.getModel();
+            dc.removeAllElements();
+            dc2.removeAllElements();
+            for (Equipo e : equipos) {
+                dc.addElement(e);
+            }
+            for (Equipo e : equipos) {
+                dc2.addElement(e);
+            }
+        }
+        
     }//GEN-LAST:event_mi_simularActionPerformed
 
     private void mi_tablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_tablaActionPerformed
         // TODO add your handling code here:
-        jd_tabla.setVisible(true);
-        jd_tabla.setLocationRelativeTo(this);
+        if(equipos.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debe de agregar equipos para poder listarlos");
+        }
+        else{
+           jd_tabla.setVisible(true);
+            jd_tabla.setLocationRelativeTo(this); 
+        }
+        
     }//GEN-LAST:event_mi_tablaActionPerformed
 
     private void bt_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearActionPerformed
         // TODO add your handling code here:
         String nombre;
         nombre = tf_nombre.getText();
-        Equipo e = new Equipo(nombre, 0, 0, 0, 0, 0, 0);
+        Equipo e = new Equipo(nombre, 0, 0, 0, 0, 0, 0, 0);
         equipos.add(e);
         JOptionPane.showMessageDialog(null, "Se ha agregado exitosamente el equipo");
         jd_crear.setVisible(false);
         tf_nombre.setText("");
+        try {
+            aE.escribirArchivo(equipos);
+        } catch (IOException ex) {
+            System.out.println("Ha ocurrido un grave error");
+        }
     }//GEN-LAST:event_bt_crearActionPerformed
 
     private void bt_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_modificarActionPerformed
@@ -376,15 +488,35 @@ public class principal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Se ha modificado exitosamente el equipo");
         jd_modificar.setVisible(false);
         tf_nombreMod.setText("");
+        try {
+            aE.escribirArchivo(equipos);
+        } catch (IOException ex) {
+            System.out.println("Ha ocurrido un grave error");
+        }
+        
     }//GEN-LAST:event_bt_modificarActionPerformed
 
     private void bt_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_eliminarActionPerformed
         // TODO add your handling code here:
-        int pos = cb_equiposElim.getSelectedIndex();
-        equipos.remove(pos);
-        JOptionPane.showMessageDialog(null, "Se ha eliminado exitosamente el equipo");
-        jd_eliminar.setVisible(false);
+            int pos = cb_equiposElim.getSelectedIndex();
+            equipos.remove(pos);
+            JOptionPane.showMessageDialog(null, "Se ha eliminado exitosamente el equipo");
+            jd_eliminar.setVisible(false);
+        try {
+            aE.escribirArchivo(equipos);
+        } catch (IOException ex) {
+            System.out.println("Ha ocurrido un grave error");
+        }
+        
     }//GEN-LAST:event_bt_eliminarActionPerformed
+
+    private void bt_simularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_simularActionPerformed
+        // TODO add your handling code here:
+        int x = 0+r.nextInt(6);
+        int y = 0+r.nextInt(6);
+        jl_num1.setText(x+"");
+        jl_num2.setText(y+"");
+    }//GEN-LAST:event_bt_simularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -425,6 +557,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton bt_crear;
     private javax.swing.JButton bt_eliminar;
     private javax.swing.JButton bt_modificar;
+    private javax.swing.JButton bt_simular;
+    private javax.swing.JComboBox<String> cb_equipo1;
+    private javax.swing.JComboBox<String> cb_equipo2;
     private javax.swing.JComboBox<String> cb_equiposElim;
     private javax.swing.JComboBox<String> cb_equiposMod;
     private javax.swing.JLabel jLabel1;
@@ -432,8 +567,10 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -442,6 +579,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_modificar;
     private javax.swing.JDialog jd_simular;
     private javax.swing.JDialog jd_tabla;
+    private javax.swing.JLabel jl_num1;
+    private javax.swing.JLabel jl_num2;
     private javax.swing.JMenuItem mi_cargar;
     private javax.swing.JMenuItem mi_crear;
     private javax.swing.JMenuItem mi_eliminar;
@@ -452,4 +591,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_nombreMod;
     // End of variables declaration//GEN-END:variables
     ArrayList<Equipo> equipos = new ArrayList();
+    administrarEquipo aE = new administrarEquipo("./Equipos.txt");
+    Random r = new Random();
 }

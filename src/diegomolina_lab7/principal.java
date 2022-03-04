@@ -5,7 +5,10 @@
  */
 package diegomolina_lab7;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
@@ -13,7 +16,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,7 +32,7 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -64,8 +70,13 @@ public class principal extends javax.swing.JFrame {
         jl_num2 = new javax.swing.JLabel();
         bt_simular = new javax.swing.JButton();
         jd_tabla = new javax.swing.JDialog();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_posiciones = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ta_archivo = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        mi_archivo = new javax.swing.JMenu();
         mi_crear = new javax.swing.JMenuItem();
         mi_modificar = new javax.swing.JMenuItem();
         mi_eliminar = new javax.swing.JMenuItem();
@@ -291,7 +302,7 @@ public class principal extends javax.swing.JFrame {
                     .addComponent(cb_equipo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_equipo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jd_simularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jd_simularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jl_num1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jl_num2, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
@@ -299,20 +310,57 @@ public class principal extends javax.swing.JFrame {
                 .addGap(63, 63, 63))
         );
 
+        jd_tabla.setSize(new java.awt.Dimension(766, 418));
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabel10.setText("Tabla de Posiciones");
+
+        jt_posiciones.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Equipo", "PJ", "PG", "PE", "PP", "GF", "GC", "DG", "Puntos"
+            }
+        ));
+        jScrollPane2.setViewportView(jt_posiciones);
+
         javax.swing.GroupLayout jd_tablaLayout = new javax.swing.GroupLayout(jd_tabla.getContentPane());
         jd_tabla.getContentPane().setLayout(jd_tablaLayout);
         jd_tablaLayout.setHorizontalGroup(
             jd_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_tablaLayout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addGroup(jd_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_tablaLayout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(190, 190, 190))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_tablaLayout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 722, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23))))
         );
         jd_tablaLayout.setVerticalGroup(
             jd_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_tablaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Equipos");
+        ta_archivo.setColumns(20);
+        ta_archivo.setRows(5);
+        jScrollPane1.setViewportView(ta_archivo);
+
+        mi_archivo.setText("Equipos");
+        mi_archivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_archivoActionPerformed(evt);
+            }
+        });
 
         mi_crear.setText("Crear Equipo");
         mi_crear.addActionListener(new java.awt.event.ActionListener() {
@@ -320,7 +368,7 @@ public class principal extends javax.swing.JFrame {
                 mi_crearActionPerformed(evt);
             }
         });
-        jMenu1.add(mi_crear);
+        mi_archivo.add(mi_crear);
 
         mi_modificar.setText("Modificar Equipo");
         mi_modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -328,7 +376,7 @@ public class principal extends javax.swing.JFrame {
                 mi_modificarActionPerformed(evt);
             }
         });
-        jMenu1.add(mi_modificar);
+        mi_archivo.add(mi_modificar);
 
         mi_eliminar.setText("Eliminar Equipo");
         mi_eliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -336,7 +384,7 @@ public class principal extends javax.swing.JFrame {
                 mi_eliminarActionPerformed(evt);
             }
         });
-        jMenu1.add(mi_eliminar);
+        mi_archivo.add(mi_eliminar);
 
         mi_cargar.setText("Cargar Archivo");
         mi_cargar.addActionListener(new java.awt.event.ActionListener() {
@@ -344,9 +392,9 @@ public class principal extends javax.swing.JFrame {
                 mi_cargarActionPerformed(evt);
             }
         });
-        jMenu1.add(mi_cargar);
+        mi_archivo.add(mi_cargar);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(mi_archivo);
 
         jMenu2.setText("Partidos");
 
@@ -374,11 +422,17 @@ public class principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -459,11 +513,61 @@ public class principal extends javax.swing.JFrame {
         }
         else{
            jd_tabla.setVisible(true);
-            jd_tabla.setLocationRelativeTo(this); 
+           jd_tabla.setLocationRelativeTo(this);
+           sort(equipos);
+           DefaultTableModel modelo
+                        = (DefaultTableModel) jt_posiciones.getModel();
+           modelo.setRowCount(0);
+            for (Equipo equipo : equipos) {
+                Equipo e = equipo;
+                int dg = e.getGolFavor() - e.getGolContra();
+                Object[] newrow = {
+                    e.getNombre(),
+                    e.getpJugados(),
+                    e.getpGanados(),
+                    e.getpEmpatados(),
+                    e.getpPerdidos(),
+                    e.getGolFavor(),
+                    e.getGolContra(),
+                    dg,
+                    e.getPuntos()
+                };                
+                
+                modelo.addRow(newrow);
+                jt_posiciones.setModel(modelo);
+            }
         }
         
     }//GEN-LAST:event_mi_tablaActionPerformed
-
+    public void sort(ArrayList<Equipo> equipos){
+        Equipo arrEquipos[] = new Equipo[equipos.size()];
+        for (int i = 0; i < equipos.size(); i++) {
+            arrEquipos[i] = equipos.get(i);
+        }
+        for (int i = 0; i < arrEquipos.length-1; i++) {
+            int pos = i;
+            for (int j = 0; j < arrEquipos.length; j++) {
+                int pos2=j;
+                if(arrEquipos[pos].getPuntos()<arrEquipos[pos2].getPuntos()){
+                    pos = j;
+                }
+                else if(arrEquipos[pos].getPuntos() == arrEquipos[pos2].getPuntos()){
+                    int dg1 = arrEquipos[pos].getGolFavor() - arrEquipos[pos].getGolContra();
+                    int dg2 = arrEquipos[pos2].getGolFavor() - arrEquipos[pos2].getGolContra();
+                    if(dg1 < dg2){
+                        pos = j;
+                    }
+                }
+            }
+            Equipo menor = arrEquipos[pos];
+            arrEquipos[pos] = arrEquipos[i];
+            arrEquipos[i] = menor;
+        }
+        equipos.clear();
+        for (int i = 0; i < arrEquipos.length; i++) {
+            equipos.add(arrEquipos[arrEquipos.length - (i+1)]);
+        }
+    }
     private void bt_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearActionPerformed
         // TODO add your handling code here:
         String nombre;
@@ -577,6 +681,42 @@ public class principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_simularActionPerformed
 
+    private void mi_archivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_archivoActionPerformed
+        // TODO add your handling code here:
+        File fichero = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        ta_archivo.setText("");
+        try {
+            JFileChooser jfc = new JFileChooser("./");
+            FileNameExtensionFilter filtro = 
+                    new FileNameExtensionFilter(
+                            "Archivos de Texto", "txt");
+            jfc.setFileFilter(filtro);          
+            int seleccion = jfc.showOpenDialog(this);
+            if (seleccion == JFileChooser.APPROVE_OPTION){
+               fichero = jfc.getSelectedFile();
+               fr = new FileReader(fichero);
+               br=new BufferedReader(fr);
+               String linea;
+               ta_archivo.setText("");
+               while(  (linea=br.readLine()) !=null  ){                    
+                    ta_archivo.append(linea);
+                    ta_archivo.append("\n");
+                }
+            } //fin if
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+                br.close();
+                fr.close();
+        } catch (IOException ex) {
+            System.out.println("Esta sucediendo un problema");
+        }
+    }//GEN-LAST:event_mi_archivoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -622,6 +762,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_equiposElim;
     private javax.swing.JComboBox<String> cb_equiposMod;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -630,9 +771,10 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JDialog jd_crear;
     private javax.swing.JDialog jd_eliminar;
     private javax.swing.JDialog jd_modificar;
@@ -640,12 +782,15 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_tabla;
     private javax.swing.JLabel jl_num1;
     private javax.swing.JLabel jl_num2;
+    private javax.swing.JTable jt_posiciones;
+    private javax.swing.JMenu mi_archivo;
     private javax.swing.JMenuItem mi_cargar;
     private javax.swing.JMenuItem mi_crear;
     private javax.swing.JMenuItem mi_eliminar;
     private javax.swing.JMenuItem mi_modificar;
     private javax.swing.JMenuItem mi_simular;
     private javax.swing.JMenuItem mi_tabla;
+    private javax.swing.JTextArea ta_archivo;
     private javax.swing.JTextField tf_nombre;
     private javax.swing.JTextField tf_nombreMod;
     // End of variables declaration//GEN-END:variables

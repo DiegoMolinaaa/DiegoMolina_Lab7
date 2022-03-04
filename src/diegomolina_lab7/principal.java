@@ -5,6 +5,8 @@
  */
 package diegomolina_lab7;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author diego
@@ -27,7 +29,177 @@ public class principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jd_crear = new javax.swing.JDialog();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        tf_nombre = new javax.swing.JTextField();
+        bt_crear = new javax.swing.JButton();
+        jd_modificar = new javax.swing.JDialog();
+        jd_eliminar = new javax.swing.JDialog();
+        jd_simular = new javax.swing.JDialog();
+        jd_tabla = new javax.swing.JDialog();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        mi_crear = new javax.swing.JMenuItem();
+        mi_modificar = new javax.swing.JMenuItem();
+        mi_eliminar = new javax.swing.JMenuItem();
+        mi_cargar = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        mi_simular = new javax.swing.JMenuItem();
+        mi_tabla = new javax.swing.JMenuItem();
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setText("Creacion de Equipo");
+
+        jLabel2.setText("Nombre del Equipo");
+
+        bt_crear.setText("Crear Equipo");
+        bt_crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_crearActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_crearLayout = new javax.swing.GroupLayout(jd_crear.getContentPane());
+        jd_crear.getContentPane().setLayout(jd_crearLayout);
+        jd_crearLayout.setHorizontalGroup(
+            jd_crearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearLayout.createSequentialGroup()
+                .addContainerGap(94, Short.MAX_VALUE)
+                .addGroup(jd_crearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearLayout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearLayout.createSequentialGroup()
+                        .addComponent(bt_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(106, 106, 106))))
+            .addGroup(jd_crearLayout.createSequentialGroup()
+                .addGroup(jd_crearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_crearLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jLabel2))
+                    .addGroup(jd_crearLayout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jd_crearLayout.setVerticalGroup(
+            jd_crearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_crearLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(tf_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(bt_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jd_modificarLayout = new javax.swing.GroupLayout(jd_modificar.getContentPane());
+        jd_modificar.getContentPane().setLayout(jd_modificarLayout);
+        jd_modificarLayout.setHorizontalGroup(
+            jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_modificarLayout.setVerticalGroup(
+            jd_modificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_eliminarLayout = new javax.swing.GroupLayout(jd_eliminar.getContentPane());
+        jd_eliminar.getContentPane().setLayout(jd_eliminarLayout);
+        jd_eliminarLayout.setHorizontalGroup(
+            jd_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_eliminarLayout.setVerticalGroup(
+            jd_eliminarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_simularLayout = new javax.swing.GroupLayout(jd_simular.getContentPane());
+        jd_simular.getContentPane().setLayout(jd_simularLayout);
+        jd_simularLayout.setHorizontalGroup(
+            jd_simularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_simularLayout.setVerticalGroup(
+            jd_simularLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jd_tablaLayout = new javax.swing.GroupLayout(jd_tabla.getContentPane());
+        jd_tabla.getContentPane().setLayout(jd_tablaLayout);
+        jd_tablaLayout.setHorizontalGroup(
+            jd_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_tablaLayout.setVerticalGroup(
+            jd_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenu1.setText("Equipos");
+
+        mi_crear.setText("Crear Equipo");
+        mi_crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_crearActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mi_crear);
+
+        mi_modificar.setText("Modificar Equipo");
+        mi_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_modificarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mi_modificar);
+
+        mi_eliminar.setText("Eliminar Equipo");
+        mi_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_eliminarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mi_eliminar);
+
+        mi_cargar.setText("Cargar Archivo");
+        mi_cargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_cargarActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mi_cargar);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Partidos");
+
+        mi_simular.setText("Simular");
+        mi_simular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_simularActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mi_simular);
+
+        mi_tabla.setText("Tabla");
+        mi_tabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_tablaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mi_tabla);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -37,11 +209,48 @@ public class principal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 277, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mi_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_crearActionPerformed
+        // TODO add your handling code here:
+        jd_crear.setVisible(true);
+    }//GEN-LAST:event_mi_crearActionPerformed
+
+    private void mi_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_modificarActionPerformed
+        // TODO add your handling code here:
+        jd_modificar.setVisible(true);
+    }//GEN-LAST:event_mi_modificarActionPerformed
+
+    private void mi_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_eliminarActionPerformed
+        // TODO add your handling code here:
+        jd_eliminar.setVisible(true);
+    }//GEN-LAST:event_mi_eliminarActionPerformed
+
+    private void mi_cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_cargarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mi_cargarActionPerformed
+
+    private void mi_simularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_simularActionPerformed
+        // TODO add your handling code here:
+        jd_simular.setVisible(true);
+    }//GEN-LAST:event_mi_simularActionPerformed
+
+    private void mi_tablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_tablaActionPerformed
+        // TODO add your handling code here:
+        jd_tabla.setVisible(true);
+    }//GEN-LAST:event_mi_tablaActionPerformed
+
+    private void bt_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_crearActionPerformed
+        // TODO add your handling code here:
+        String nombre;
+        nombre = tf_nombre.getText();
+        Equipo e = new Equipo(nombre, 0, 0, 0, 0, 0, 0);
+        equipos.add(e);
+    }//GEN-LAST:event_bt_crearActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +288,24 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_crear;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JDialog jd_crear;
+    private javax.swing.JDialog jd_eliminar;
+    private javax.swing.JDialog jd_modificar;
+    private javax.swing.JDialog jd_simular;
+    private javax.swing.JDialog jd_tabla;
+    private javax.swing.JMenuItem mi_cargar;
+    private javax.swing.JMenuItem mi_crear;
+    private javax.swing.JMenuItem mi_eliminar;
+    private javax.swing.JMenuItem mi_modificar;
+    private javax.swing.JMenuItem mi_simular;
+    private javax.swing.JMenuItem mi_tabla;
+    private javax.swing.JTextField tf_nombre;
     // End of variables declaration//GEN-END:variables
+    ArrayList<Equipo> equipos = new ArrayList();
 }

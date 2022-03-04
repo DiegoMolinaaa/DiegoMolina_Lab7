@@ -356,11 +356,6 @@ public class principal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(ta_archivo);
 
         mi_archivo.setText("Equipos");
-        mi_archivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mi_archivoActionPerformed(evt);
-            }
-        });
 
         mi_crear.setText("Crear Equipo");
         mi_crear.addActionListener(new java.awt.event.ActionListener() {
@@ -424,15 +419,15 @@ public class principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(86, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
@@ -480,6 +475,37 @@ public class principal extends javax.swing.JFrame {
 
     private void mi_cargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_cargarActionPerformed
         // TODO add your handling code here:
+        File fichero = null;
+        FileReader fr = null;
+        BufferedReader br = null;
+        ta_archivo.setText("");
+        try {
+            JFileChooser jfc = new JFileChooser("./");
+            FileNameExtensionFilter filtro = 
+                    new FileNameExtensionFilter(
+                            "Archivos de Texto", "txt");
+            jfc.setFileFilter(filtro);          
+            int seleccion = jfc.showOpenDialog(this);
+            if (seleccion == JFileChooser.APPROVE_OPTION){
+               fichero = jfc.getSelectedFile();
+               fr = new FileReader(fichero);
+               br=new BufferedReader(fr);
+               String linea;
+               while(  (linea=br.readLine()) !=null  ){                    
+                    ta_archivo.append(linea);
+                    ta_archivo.append("\n");
+                }
+            } //fin if
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+                br.close();
+                fr.close();
+        } catch (IOException ex) {
+            System.out.println("Esta sucediendo un problema");
+        }
     }//GEN-LAST:event_mi_cargarActionPerformed
 
     private void mi_simularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_simularActionPerformed
@@ -680,42 +706,6 @@ public class principal extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_bt_simularActionPerformed
-
-    private void mi_archivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_archivoActionPerformed
-        // TODO add your handling code here:
-        File fichero = null;
-        FileReader fr = null;
-        BufferedReader br = null;
-        ta_archivo.setText("");
-        try {
-            JFileChooser jfc = new JFileChooser("./");
-            FileNameExtensionFilter filtro = 
-                    new FileNameExtensionFilter(
-                            "Archivos de Texto", "txt");
-            jfc.setFileFilter(filtro);          
-            int seleccion = jfc.showOpenDialog(this);
-            if (seleccion == JFileChooser.APPROVE_OPTION){
-               fichero = jfc.getSelectedFile();
-               fr = new FileReader(fichero);
-               br=new BufferedReader(fr);
-               String linea;
-               ta_archivo.setText("");
-               while(  (linea=br.readLine()) !=null  ){                    
-                    ta_archivo.append(linea);
-                    ta_archivo.append("\n");
-                }
-            } //fin if
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-                br.close();
-                fr.close();
-        } catch (IOException ex) {
-            System.out.println("Esta sucediendo un problema");
-        }
-    }//GEN-LAST:event_mi_archivoActionPerformed
 
     /**
      * @param args the command line arguments

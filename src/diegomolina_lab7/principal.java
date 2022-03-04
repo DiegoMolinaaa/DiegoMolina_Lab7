@@ -516,6 +516,65 @@ public class principal extends javax.swing.JFrame {
         int y = 0+r.nextInt(6);
         jl_num1.setText(x+"");
         jl_num2.setText(y+"");
+        int pos1 = cb_equipo1.getSelectedIndex();
+        int pos2 = cb_equipo2.getSelectedIndex();
+        equipos.get(pos1).setpJugados(equipos.get(pos1).getpJugados()+1);
+        equipos.get(pos2).setpJugados(equipos.get(pos2).getpJugados()+1);
+        if(x>y){
+            equipos.get(pos1).setpGanados(equipos.get(pos1).getpGanados()+1);
+            equipos.get(pos2).setpPerdidos(equipos.get(pos2).getpPerdidos()+1);
+            equipos.get(pos1).setGolFavor(equipos.get(pos1).getGolFavor()+x);
+            equipos.get(pos1).setGolContra(equipos.get(pos1).getGolContra()+y);
+            equipos.get(pos2).setGolFavor(equipos.get(pos2).getGolFavor()+y);
+            equipos.get(pos2).setGolContra(equipos.get(pos2).getGolContra()+x);
+            equipos.get(pos1).setPuntos(equipos.get(pos1).getPuntos()+3);
+            JOptionPane.showMessageDialog(null, "Ha ganado el "+cb_equipo1.getSelectedItem());
+            jl_num1.setText("");
+            jl_num2.setText("");
+            jd_simular.setVisible(false);
+            try {
+                aE.escribirArchivo(equipos);
+            } catch (IOException ex) {
+                System.out.println("Ha ocurrido un grave error");
+            }
+        }
+        else if(y>x){
+            equipos.get(pos2).setpGanados(equipos.get(pos2).getpGanados()+1);
+            equipos.get(pos1).setpPerdidos(equipos.get(pos1).getpPerdidos()+1);
+            equipos.get(pos2).setGolFavor(equipos.get(pos2).getGolFavor()+y);
+            equipos.get(pos2).setGolContra(equipos.get(pos2).getGolContra()+x);
+            equipos.get(pos1).setGolFavor(equipos.get(pos1).getGolFavor()+x);
+            equipos.get(pos1).setGolContra(equipos.get(pos1).getGolContra()+y);
+            equipos.get(pos2).setPuntos(equipos.get(pos2).getPuntos()+3);
+            JOptionPane.showMessageDialog(null, "Ha ganado el "+cb_equipo2.getSelectedItem());
+            jl_num1.setText("");
+            jl_num2.setText("");
+            jd_simular.setVisible(false);
+            try {
+                aE.escribirArchivo(equipos);
+            } catch (IOException ex) {
+                System.out.println("Ha ocurrido un grave error");
+            }
+        }
+        else if(x==y){
+            equipos.get(pos2).setpEmpatados(equipos.get(pos2).getpEmpatados()+1);
+            equipos.get(pos1).setpEmpatados(equipos.get(pos1).getpEmpatados()+1);
+            equipos.get(pos2).setGolFavor(equipos.get(pos2).getGolFavor()+y);
+            equipos.get(pos2).setGolContra(equipos.get(pos2).getGolContra()+x);
+            equipos.get(pos1).setGolFavor(equipos.get(pos1).getGolFavor()+x);
+            equipos.get(pos1).setGolContra(equipos.get(pos1).getGolContra()+y);
+            equipos.get(pos2).setPuntos(equipos.get(pos2).getPuntos()+1);
+            equipos.get(pos1).setPuntos(equipos.get(pos1).getPuntos()+1);
+            JOptionPane.showMessageDialog(null, "Han empatado los dos equipos");
+            jl_num1.setText("");
+            jl_num2.setText("");
+            jd_simular.setVisible(false);
+            try {
+                aE.escribirArchivo(equipos);
+            } catch (IOException ex) {
+                System.out.println("Ha ocurrido un grave error");
+            }
+        }
     }//GEN-LAST:event_bt_simularActionPerformed
 
     /**

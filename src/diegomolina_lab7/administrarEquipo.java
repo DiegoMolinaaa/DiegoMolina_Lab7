@@ -21,6 +21,8 @@ import java.util.Scanner;
 public class administrarEquipo {
     private File archivo = null;
 
+    public administrarEquipo() {
+    }
     public administrarEquipo(String path) {
         archivo = new File(path);
     }

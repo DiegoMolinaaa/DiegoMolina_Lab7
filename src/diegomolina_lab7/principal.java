@@ -683,38 +683,7 @@ public class principal extends javax.swing.JFrame {
 
     private void mi_archivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_archivoActionPerformed
         // TODO add your handling code here:
-        File fichero = null;
-        FileReader fr = null;
-        BufferedReader br = null;
-        ta_archivo.setText("");
-        try {
-            JFileChooser jfc = new JFileChooser("./");
-            FileNameExtensionFilter filtro = 
-                    new FileNameExtensionFilter(
-                            "Archivos de Texto", "txt");
-            jfc.setFileFilter(filtro);          
-            int seleccion = jfc.showOpenDialog(this);
-            if (seleccion == JFileChooser.APPROVE_OPTION){
-               fichero = jfc.getSelectedFile();
-               fr = new FileReader(fichero);
-               br=new BufferedReader(fr);
-               String linea;
-               ta_archivo.setText("");
-               while(  (linea=br.readLine()) !=null  ){                    
-                    ta_archivo.append(linea);
-                    ta_archivo.append("\n");
-                }
-            } //fin if
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-                br.close();
-                fr.close();
-        } catch (IOException ex) {
-            System.out.println("Esta sucediendo un problema");
-        }
+        
     }//GEN-LAST:event_mi_archivoActionPerformed
 
     /**

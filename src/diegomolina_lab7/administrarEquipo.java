@@ -5,8 +5,11 @@
  */
 package diegomolina_lab7;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -73,4 +76,19 @@ public class administrarEquipo {
             sc.close();
         }
     }
+//    public void cargarArchivo(ArrayList<Equipo> equipos) throws FileNotFoundException, IOException {
+//        String linea = "";
+//
+//        BufferedReader br = new BufferedReader(new FileReader("./archivo.txt") );
+//
+//        while( (linea = br.readLine() ) != null ){
+//
+//	    String[] atributos = linea.split(";");
+//        }
+//	//ASIGNAR ATRIBUTOS A UN EQUIPO
+//
+//	equipos.add(equipo);
+//
+//}
+//    }
 }
